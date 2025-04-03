@@ -2,8 +2,8 @@ name: Send Weekly Menu
 
 on:
   schedule:
-    - cron: '34 11 * * 4'  # 매주 목요일 11:17 UTC → 한국시간 목요일 20:17
-  workflow_dispatch:     # 수동 실행도 가능하게
+    - cron: '0 23 * * 0'  # 매주 월요일 오전 8시 (KST)
+  workflow_dispatch:     
 
 jobs:
   send-email:
