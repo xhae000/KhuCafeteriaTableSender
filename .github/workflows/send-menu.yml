@@ -1,0 +1,30 @@
+name: Send Weekly Menu
+
+on:
+  schedule:
+    - cron: '0 23 * * 0' # 한국 시간 월요일 08:00 (UTC로는 일요일 23:00)
+  workflow_dispatch:     # 수동 실행도 가능하게
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run script
+      env:
+        EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
+      run: python notifier.py
