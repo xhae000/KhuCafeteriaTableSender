@@ -10,9 +10,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_RECIPIENTS = os.getenv("EMAIL_RECIPIENTS").split(",")
+
+SMTP_SERVER = "smtp.naver.com"
+SMTP_PORT = 587
 
 # 경희대학교 학생회관 식당 주간메뉴 페이지 URL
 MENU_PAGE_URL = "https://coop.khu.ac.kr/food-menu/%ed%95%99%ec%83%9d%ed%9a%8c%ea%b4%80-%ec%8b%9d%eb%8b%b9-%ec%a3%bc%ea%b0%84%eb%a9%94%eb%89%b4/"
